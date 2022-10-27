@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaBars} from 'react-icons/fa';
 
 // Export Links
@@ -29,6 +29,7 @@ const links = [
 
 
 const Navbar = () => {
+    const [nav, setNav] = useState(false);
     return (
         <nav className='flex justify-between
         items-center w-full h-20 px-4
