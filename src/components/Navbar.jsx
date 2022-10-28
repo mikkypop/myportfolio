@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars} from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 // Export Links
 
@@ -24,9 +24,7 @@ const links = [
         id: 5,
         link: 'contact'
     },
-]
-
-
+];
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -37,29 +35,50 @@ const Navbar = () => {
 
             <div>
                 <h1 className='text-4xl
-                font-signature ml-2'>Michael</h1>
+                font-signature ml-2'>Gray</h1>
             </div>
 
             <ul className='hidden md:flex'>
+                {links.map(({ id, link }) => (
+                    <li
+                        key={id}
+                        className='px-4
+                    cursor-pointer capitalize
+                    text-gray-300 font-medium
+                    hover:scale-110
+                    duration-200'>{link}
+                    </li>
+                ))}
+            </ul>
+            {/* Application od UseState
+            on a Navigation Bar */}
+            <div
+                onClick={() => setNav(!nav)}
+                className='cursor-pointer
+                pr-4 z-10 text-gray-300'>
+                {nav ? <FaTimes size={30} /> :
+                    <FaBars size={30} />}
+            </div>
+
+            <ul className='flex flex-col
+            justify-center left-0 items-center
+            absolute top-0 w-full h-screen
+            bg-gradient-to-b from-black
+            to-gray-900 text-gray-300'>
 
                 {links.map(({ id, link }) => (
 
                     <li
-                        key={id} className='px-4
-                    cursor-pointer capitalize
-                    text-gray-300 font-medium
-                    hover:scale-110
+                        key={id}
+                        className='
+                    px-4 cursor-pointer
+                    capitalize py-3
+                    font-medium text-gray-300
+                    hover:scale-105
                     duration-200'>{link}</li>
 
-                    
-
                 ))}
-
             </ul>
-            <div className='cursor-pointer
-            pr-4 z-10 text-gray-300'>
-                <FaBars size={30} />
-            </div>
         </nav>
     )
 }
